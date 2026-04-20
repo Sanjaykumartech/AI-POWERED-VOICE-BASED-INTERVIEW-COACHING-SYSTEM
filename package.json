@@ -1,0 +1,27 @@
+{
+  "name": "ai-interview-coach-platform",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "app",
+    "server",
+    "shared"
+  ],
+  "scripts": {
+    "dev": "npm-run-all --parallel dev:web dev:api",
+    "dev:web": "npm run dev --workspace app",
+    "dev:api": "npm run dev --workspace server",
+    "build:web": "npm run build --workspace shared && npm run build --workspace app",
+    "build:api": "npm run build --workspace shared && npm run build --workspace server",
+    "build": "npm run build --workspace shared && npm run build --workspace server && npm run build --workspace app",
+    "lint": "npm run lint --workspace app && npm run lint --workspace server",
+    "typecheck": "npm run typecheck --workspace shared && npm run typecheck --workspace server && npm run typecheck --workspace app"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "mongoose": "^9.4.1"
+  }
+}
